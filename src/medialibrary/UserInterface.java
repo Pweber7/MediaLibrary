@@ -11,5 +11,6 @@ public class UserInterface {
 			System.out.println("What would you like to do? ");
 			action = reader.nextLine();
 		}
+		reader.close();
 	}
 }
