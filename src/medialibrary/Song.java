@@ -1,9 +1,18 @@
 package medialibrary;
 
 public class Song {
-	public Song(String title, String artist, String genera){
-		String sTitle = title;
-		String sArtist = artist;
-		String sGenera = genera;
+	
+	private String sTitle;
+	private String sArtist;
+	private String sGenre;
+	
+	public Song(String title, String artist, String genre){
+		sTitle = title;
+		sArtist = artist;
+		sGenre = genre;
+	}
+	
+	public String getTitle(){
+		return sTitle;
 	}
 }
