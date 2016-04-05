@@ -66,7 +66,7 @@ public class DatabaseSupport {
 		return dummyWatchlist.remove(v);
 	}
 	
-	public boolean removeFromPlaylst(String title){
+	public boolean removeFromPlaylist(String title){
 		Song s = dummyFindSong(title, dummyPlaylist);
 		return dummyPlaylist.remove(s);
 	}
