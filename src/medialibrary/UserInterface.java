@@ -67,7 +67,7 @@ public class UserInterface {
 				}
 				else
 				{
-					sc.getPlaylist();
+					sc.listPlaylist();
 				}
 			}
 			else if(action.toUpperCase().equals("GET"))
