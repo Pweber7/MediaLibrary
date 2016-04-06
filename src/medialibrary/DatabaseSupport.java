@@ -66,9 +66,14 @@ public class DatabaseSupport {
 		return dummyWatchlist.remove(v);
 	}
 	
-	public boolean removeFromPlaylist(String title){
-		Song s = dummyFindSong(title, dummyPlaylist);
-		return dummyPlaylist.remove(s);
+	public boolean addToWatchlist(String title){
+		Video v = dummyFindVideo(title, dummyVideoLibrary);
+		return dummyWatchlist.add(v);
+	}
+	
+	public boolean addToPlaylist(String title){
+		Song s = dummyFindSong(title, dummySongLibrary);
+		return dummyPlaylist.add(s);
 	}
 	
 	public List<Video> listVideoLibrary(){
