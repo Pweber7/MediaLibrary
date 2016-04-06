@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class UserInterface {
 	public static void main(String[] args)
 	{
-		DatabaseSupport d = new DatabaseSupport();
+		SystemController sc = new SystemController();
 		Scanner reader = new Scanner(System.in);
 		String action = "";
 		while(true)
@@ -40,26 +40,34 @@ public class UserInterface {
 				{
 					System.out.println("Please type the title of the Video ");
 					action = reader.nextLine();
-					d.removeFromWatchlist(action);
+					//removeFromWatchlist(action);
 				}
 				else
 				{
 					System.out.println("Please type the name of the Song ");
 					action = reader.nextLine();
-					d.removeFromPlaylist(action);
+					//removeFromPlaylist(action);
 				}
 			}
 			else if(action.toUpperCase().equals("LIST"))
 			{
-				System.out.println("Would you like to list the Video or Music library? ");
+				System.out.println("Would you like to list the Video Library, Music library, Watchlist, or Playlist");
 				action = reader.nextLine();
-				if(action.toUpperCase().equals("WATCHLIST"))
+				if(action.toUpperCase().equals("VIDEO LIBRARY"))
 				{
-					d.listVideoLibrary();
+					//listVideoLibrary();
+				}
+				else if(action.toUpperCase().equals("MUSIC LIBRARY"))
+				{
+					//listMusicLibrary();
+				}
+				else if(action.toUpperCase().equals("WATCHLIST"))
+				{
+					//getWatchlist();
 				}
 				else
 				{
-					d.listMusicLibrary();
+					//getPlaylist();
 				}
 			}
 			else if(action.toUpperCase().equals("GET"))
