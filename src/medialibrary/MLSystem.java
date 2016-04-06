@@ -30,7 +30,7 @@ public class MLSystem {
 	public boolean addToPlaylist(String name)
 	{
 		return ds.addToPlaylist(name);
-	}
+	} 
 	
 	public boolean addToWatchlist(String title)
 	{
