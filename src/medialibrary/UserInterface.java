@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class UserInterface {
 	public static void main(String[] args)
 	{
+		DatabaseSupport d = new DatabaseSupport();
 		Scanner reader = new Scanner(System.in);
 		String action = "";
 		while(true)
@@ -39,13 +40,13 @@ public class UserInterface {
 				{
 					System.out.println("Please type the title of the Video ");
 					action = reader.nextLine();
-					//removeFromWatchlist(action);
+					d.removeFromWatchlist(action);
 				}
 				else
 				{
 					System.out.println("Please type the name of the Song ");
 					action = reader.nextLine();
-					//removeFromPlaylist(action);
+					d.removeFromPlaylist(action);
 				}
 			}
 			else if(action.toUpperCase().equals("LIST"))
@@ -54,11 +55,11 @@ public class UserInterface {
 				action = reader.nextLine();
 				if(action.toUpperCase().equals("WATCHLIST"))
 				{
-					//listVideoLibrary();
+					d.listVideoLibrary();
 				}
 				else
 				{
-					//listMusicLibrary();
+					d.listMusicLibrary();
 				}
 			}
 			else if(action.toUpperCase().equals("GET"))
@@ -69,13 +70,13 @@ public class UserInterface {
 				{
 					System.out.println("Please type the title of the Video ");
 					action = reader.nextLine();
-					//getVideo(action);
+					//getInfo(action);
 				}
 				else
 				{
 					System.out.println("Please type the name of the Song ");
 					action = reader.nextLine();
-					//getSong(action);
+					//getInfo(action);
 				}
 			}
 		}
