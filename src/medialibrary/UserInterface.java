@@ -23,13 +23,13 @@ public class UserInterface {
 				{
 					System.out.println("Please type the title of the video ");
 					action = reader.nextLine();
-					//addToWatchlist(action);
+					sc.addToWatchlist(action);
 				}
 				else
 				{
 					System.out.println("Please type the name of the Song ");
 					action = reader.nextLine();
-					//addToPlaylist(action);
+					sc.addToPlaylist(action);
 				}
 			}
 			else if(action.toUpperCase().equals("REMOVE"))
@@ -40,7 +40,7 @@ public class UserInterface {
 				{
 					System.out.println("Please type the title of the Video ");
 					action = reader.nextLine();
-					//removeFromWatchlist(action);
+					sc.removeFromWatchlist(action);
 				}
 				else
 				{
@@ -55,19 +55,19 @@ public class UserInterface {
 				action = reader.nextLine();
 				if(action.toUpperCase().equals("VIDEO LIBRARY"))
 				{
-					//listVideoLibrary();
+					sc.listVideoLibrary();
 				}
 				else if(action.toUpperCase().equals("MUSIC LIBRARY"))
 				{
-					//listMusicLibrary();
+					sc.listMusicLibrary();
 				}
 				else if(action.toUpperCase().equals("WATCHLIST"))
 				{
-					//getWatchlist();
+					sc.listWatchlist();
 				}
 				else
 				{
-					//getPlaylist();
+					sc.getPlaylist();
 				}
 			}
 			else if(action.toUpperCase().equals("GET"))
@@ -78,13 +78,13 @@ public class UserInterface {
 				{
 					System.out.println("Please type the title of the Video ");
 					action = reader.nextLine();
-					//getInfo(action);
+					sc.getInformationVideo(action);
 				}
 				else
 				{
 					System.out.println("Please type the name of the Song ");
 					action = reader.nextLine();
-					//getInfo(action);
+					sc.getInformationSong(action);
 				}
 			}
 		}
