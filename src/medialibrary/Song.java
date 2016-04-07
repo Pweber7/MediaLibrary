@@ -15,4 +15,9 @@ public class Song {
 	public String getTitle(){
 		return sTitle;
 	}
+	
+	public String getInfo()
+	{
+		return(sTitle + "	" + sArtist + "	" + sGenre);
+	}
 }
