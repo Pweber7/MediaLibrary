@@ -3,7 +3,7 @@ package medialibrary;
 public class Movie extends Video{
 
 	private String mRuntime;
-	private String mTimeRemaining;
+	private String mTimeWatched;
 	
 	protected Movie(String title) {
 		super(title);
@@ -12,6 +12,7 @@ public class Movie extends Video{
 	
 	public String getInfo(){
 		String info = null;
-		info += vTitle + "\n" + vGenre + "\n" + vRating + "\n" + vDescription + "\n";
+		info += vTitle + "\n" + vGenre + "\n" + vRating + "\n" + mTimeWatched + " / " + mRuntime + "\n" + vDescription + "\n";
+		return info;
 	}
 }
