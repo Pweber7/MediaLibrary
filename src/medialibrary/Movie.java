@@ -5,8 +5,10 @@ public class Movie extends Video{
 	private String mRuntime;
 	private String mTimeWatched;
 	
-	protected Movie(){
-		super(vTitle, vRating, vGenre, vDescription);
+	protected Movie(String title, String rating, String genre, String description, String runtime, String timeWatched){
+		super(title, rating, genre, description);
+		mRuntime = runtime;
+		mTimeWatched = timeWatched;
 	}
 	
 	public String getInfo(){
