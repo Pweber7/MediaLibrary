@@ -5,9 +5,8 @@ public class Movie extends Video{
 	private String mRuntime;
 	private String mTimeWatched;
 	
-	protected Movie(String title) {
-		super(title);
-		// TODO Auto-generated constructor stub
+	protected Movie(){
+		super(vTitle, vRating, vGenre, vDescription);
 	}
 	
 	public String getInfo(){
