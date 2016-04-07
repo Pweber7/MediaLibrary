@@ -104,14 +104,14 @@ public class UserInterface {
 					System.out.println("Please type the title of the Video ");
 					action = reader.nextLine();
 					Video v = sc.getInformationVideo(action);
-					//v.getInfo();
+					System.out.println(v.getInfo());
 				}
 				else
 				{
 					System.out.println("Please type the name of the Song ");
 					action = reader.nextLine();
 					Song s = sc.getInformationSong(action);
-					//s.getInfo();
+					System.out.println(s.getInfo());
 				}
 			}
 			if(success)
