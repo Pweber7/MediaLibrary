@@ -2,15 +2,15 @@ package medialibrary;
 
 public abstract class Video {
 
-	private String vTitle;
-	private String vRating;
-	private String vGenera;
-	private String vDescription;
+	protected String vTitle;
+	protected String vRating;
+	protected String vGenre;
+	protected String vDescription;
 	
-	protected Video(String title, String rating, String genera, String description){
+	protected Video(String title, String rating, String genre, String description){
 		vTitle = title;
 		vRating = rating;
-		vGenera = genera;
+		vGenre = genre;
 		vDescription = description;
 		
 	}
