@@ -18,6 +18,6 @@ public class Song {
 	
 	public String getInfo()
 	{
-		return(sTitle + "	" + sArtist + "	" + sGenre);
+		return("Name: " + sTitle + "\n" + "Artist: " + sArtist + "\n" + "Genre: " + sGenre);
 	}
 }
