@@ -2,10 +2,10 @@ package medialibrary;
 
 public class Movie extends Video{
 
-	private String mRuntime;
-	private String mTimeWatched;
+	private int mRuntime;
+	private int mTimeWatched;
 	
-	protected Movie(String title, String rating, String genre, String description, String runtime, String timeWatched){
+	protected Movie(String title, String rating, String genre, String description, int runtime, int timeWatched){
 		super(title, rating, genre, description);
 		mRuntime = runtime;
 		mTimeWatched = timeWatched;
