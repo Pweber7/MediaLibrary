@@ -2,13 +2,13 @@ package medialibrary;
 
 public class TVShow extends Video{
 
-	private String tvEpisodes;
-	private String tvSeasons;
-	private String tvTotalEpisodes;
-	private String tvTotalSeasons;
+	private int tvEpisodes;
+	private int tvSeasons;
+	private int tvTotalEpisodes;
+	private int tvTotalSeasons;
 	private int episodeLength;
 	
-	public TVShow(String title, String rating, String genre, String description, String episodes, String seasons, String totalEpisodes, String totalSeasons, int length) {
+	public TVShow(String title, String rating, String genre, String description, int episodes, int seasons, int totalEpisodes, int totalSeasons, int length) {
 		super(title, rating, genre, description);
 		tvEpisodes = episodes;
 		tvSeasons = seasons;
