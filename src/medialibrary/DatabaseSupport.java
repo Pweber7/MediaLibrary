@@ -43,10 +43,10 @@ public class DatabaseSupport {
 		Statement stmt;
 		try {
 			stmt = connect.createStatement();
-		ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Song where OnPlaylist=1");
-		while(rs.next()){
-			list.add(new Song(rs.getString("Title"), rs.getString("Artist"), rs.getString("Genre")));
-		}
+			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Song where OnPlaylist=1");
+			while(rs.next()){
+				list.add(new Song(rs.getString("Title"), rs.getString("Artist"), rs.getString("Genre")));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -64,8 +64,14 @@ public class DatabaseSupport {
 	}
 	
 	public boolean addToPlaylist(String title){
-		Song s = dummyFindSong(title, dummySongLibrary);
-		return dummyPlaylist.add(s);
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+			stmt.executeUpdate("update "+DBNAME+".Song set OnPlaylist=1 where Title='"+title+"'");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 	
 	public List<Video> listVideoLibrary(){
@@ -73,7 +79,18 @@ public class DatabaseSupport {
 	}
 	
 	public List<Song> listMusicLibrary(){
-		return dummySongLibrary;
+		ArrayList<Song> list = new ArrayList<>();
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Song");
+			while(rs.next()){
+				list.add(new Song(rs.getString("Title"), rs.getString("Artist"), rs.getString("Genre")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 	
 	public Video getVideo(String title){
@@ -81,22 +98,24 @@ public class DatabaseSupport {
 	}
 	
 	public Song getSong(String title){
-		return dummyFindSong(title, dummySongLibrary);
+		Song s = null;
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+		ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Song where Title='"+title+"'");
+			if(rs.next()){
+				s = new Song(rs.getString("Title"), rs.getString("Artist"), rs.getString("Genre"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return s;
 	}
 	
 	private Video dummyFindVideo(String title, ArrayList<Video> list){
 		for(Video v : list){
 			if(v.getTitle().equals(title)){
 				return v;
-			}
-		}
-		return null;
-	}
-	
-	private Song dummyFindSong(String title, ArrayList<Song> list){
-		for(Song s : list){
-			if(s.getTitle().equals(title)){
-				return s;
 			}
 		}
 		return null;
