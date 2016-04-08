@@ -15,15 +15,17 @@ public class UserInterface {
 		{
 			System.out.println("What would you like to do? ");
 			action = reader.nextLine();
-			if(action.toUpperCase().equals("QUIT"))
+			action.toUpperCase();
+			if(action.charAt(0) == 'Q')
 			{
 				break;
 			}
-			if(action.toUpperCase().equals("ADD"))
+			if(action.charAt(0) == 'A')
 			{
 				System.out.println("Would you like to add to your Video or Audio list? ");
 				action = reader.nextLine();
-				if(action.toUpperCase().equals("VIDEO"))
+				action.toUpperCase();
+				if(action.charAt(0) == 'V')
 				{
 					System.out.println("Please type the title of the video ");
 					action = reader.nextLine();
@@ -45,11 +47,12 @@ public class UserInterface {
 				}
 				
 			}
-			else if(action.toUpperCase().equals("REMOVE"))
+			else if(action.charAt(0) == 'R')
 			{
 				System.out.println("Would you like to remove a Video or Song?");
 				action = reader.nextLine();
-				if(action.toUpperCase().equals("VIDEO"))
+				action.toUpperCase();
+				if(action.charAt(0) == 'V')
 				{
 					System.out.println("Please type the title of the Video ");
 					action = reader.nextLine();
@@ -71,16 +74,17 @@ public class UserInterface {
 				}
 				
 			}
-			else if(action.toUpperCase().equals("LIST"))
+			else if(action.charAt(0) == 'L')
 			{
 				System.out.println("Would you like to list a list of Videos or Songs");
 				action = reader.nextLine();
-				
-				if(action.toUpperCase().equals("VIDEOS"))
+				action.toUpperCase();
+				if(action.charAt(0) == 'V')
 				{
 					System.out.println("Would you like to list the Video Library or your Watchlist>");
 					action = reader.nextLine();
-					if(action.toUpperCase().equals("VIDEO LIBRARY"))
+					action.toUpperCase();
+					if(action.charAt(0) == 'V')
 					{
 						Vlist = (ArrayList<Video>) sc.listVideoLibrary();
 					}
@@ -98,7 +102,8 @@ public class UserInterface {
 				{
 					System.out.println("Would you like to list the Music Library or your Playlist");
 					action = reader.nextLine();
-					if(action.toUpperCase().equals("MUSIC LIBRARY"))
+					action.toUpperCase();
+					if(action.charAt(0) == 'M')
 					{
 						Slist = (ArrayList<Song>) sc.listMusicLibrary();
 					}
@@ -112,11 +117,12 @@ public class UserInterface {
 					}
 				}				
 			}
-			else if(action.toUpperCase().equals("GET"))
+			else if(action.charAt(0) == 'G')
 			{
 				System.out.println("Would you like to info for a Video or Song ");
 				action = reader.nextLine();
-				if(action.toUpperCase().equals("VIDEO"))
+				action.toUpperCase();
+				if(action.charAt(0) == 'V')
 				{
 					System.out.println("Please type the title of the Video ");
 					action = reader.nextLine();
