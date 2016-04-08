@@ -42,7 +42,12 @@ public class DatabaseSupport {
 			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where OnWatchlist=1");
 			while(rs.next()){
 				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("Runtime"), rs.getInt("TimeWatched")));
+						rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining")));
+			}
+			rs = stmt.executeQuery("select * from "+DBNAME+".TVShow where OnWatchlist=1");
+			while(rs.next()){
+				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
+						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -66,13 +71,27 @@ public class DatabaseSupport {
 	}
 	
 	public boolean removeFromWatchlist(String title){
-		Video v = dummyFindVideo(title, dummyWatchlist);
-		return dummyWatchlist.remove(v);
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+			stmt.executeUpdate("update "+DBNAME+".Movie set OnWatchlist=0 where Title='"+title+"'");
+			stmt.executeUpdate("update "+DBNAME+".TVShow set OnWatchlist=0 where Title='"+title+"'");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 	
 	public boolean addToWatchlist(String title){
-		Video v = dummyFindVideo(title, dummyVideoLibrary);
-		return dummyWatchlist.add(v);
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+			stmt.executeUpdate("update "+DBNAME+".Movie set OnWatchlist=1 where Title='"+title+"'");
+			stmt.executeUpdate("update "+DBNAME+".TVShow set OnWatchlist=1 where Title='"+title+"'");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 	
 	public boolean addToPlaylist(String title){
@@ -87,7 +106,24 @@ public class DatabaseSupport {
 	}
 	
 	public List<Video> listVideoLibrary(){
-		return dummyVideoLibrary;
+		ArrayList<Video> list = new ArrayList<>();
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie");
+			while(rs.next()){
+				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
+						rs.getInt("Runtime"), rs.getInt("Runtime")-rs.getInt("TimeRemaining")));
+			}
+			rs = stmt.executeQuery("select * from "+DBNAME+".TVShow");
+			while(rs.next()){
+				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
+						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 	
 	public List<Song> listMusicLibrary(){
@@ -106,7 +142,26 @@ public class DatabaseSupport {
 	}
 	
 	public Video getVideo(String title){
-		return dummyFindVideo(title, dummyVideoLibrary);
+		Video v = null;
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where Title='"+title+"'");
+			if(rs.next()){
+				v = new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
+						rs.getInt("Runtime"), rs.getInt("Runtime")-rs.getInt("TimeRemaining"));
+			}
+			else{
+				rs = stmt.executeQuery("select * from "+DBNAME+".TVShow where Title='"+title+"'");
+				if(rs.next()){
+					v = new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
+							rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length"));
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return v;
 	}
 	
 	public Song getSong(String title){
@@ -122,14 +177,5 @@ public class DatabaseSupport {
 			e.printStackTrace();
 		}
 		return s;
-	}
-	
-	private Video dummyFindVideo(String title, ArrayList<Video> list){
-		for(Video v : list){
-			if(v.getTitle().equals(title)){
-				return v;
-			}
-		}
-		return null;
 	}
 }
