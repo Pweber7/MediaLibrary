@@ -1,56 +1,37 @@
 package medialibrary;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class DatabaseSupport {
 	
-	private ArrayList<Video> dummyVideoLibrary = new ArrayList<>();
-	private ArrayList<Song> dummySongLibrary = new ArrayList<>();
-	private ArrayList<Video> dummyWatchlist = new ArrayList<>();
-	private ArrayList<Song> dummyPlaylist = new ArrayList<>();
-	private Movie m1 = new Movie("Movie1");
-	private Movie m2 = new Movie("Movie2");
-	private TVShow t1 = new TVShow("TVShow1");
-	private TVShow t2 = new TVShow("TVShow2");
-	private Song s1 = new Song("Song1", "", "");
-	private Song s2 = new Song("Song2", "", "");
-	private Song s3 = new Song("Song3", "", "");
+	private static final String HOST = "mysql.cs.iastate.edu";
+	private static final String USER = "dbu362jacobs62";
+	private static final String PASSWORD = "59qrTPd2hYVh";
+	private static final String DBNAME = "db362jacobs62";
 	
-	private void dummyInit(){
-		dummyVideoLibrary.add(m1);
-		dummyVideoLibrary.add(m2);
-		dummyVideoLibrary.add(t1);
-		dummyVideoLibrary.add(t2);
-		dummySongLibrary.add(s1);
-		dummySongLibrary.add(s2);
-		dummySongLibrary.add(s3);
-		dummyWatchlist.add(m1);
-		dummyWatchlist.add(t2);
-		dummyPlaylist.add(s2);
-		dummyPlaylist.add(s1);
-	}
-	
-	private Video dummyFindVideo(String title, ArrayList<Video> list){
-		for(Video v : list){
-			if(v.getTitle().equals(title)){
-				return v;
-			}
-		}
-		return null;
-	}
-	
-	private Song dummyFindSong(String title, ArrayList<Song> list){
-		for(Song s : list){
-			if(s.getTitle().equals(title)){
-				return s;
-			}
-		}
-		return null;
-	}
+	private Connection connect = null;
 	
 	public DatabaseSupport(){
-		dummyInit();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Properties connProps = new Properties();
+			connProps.put("user", USER);
+			connProps.put("password", PASSWORD);
+			connect = DriverManager.getConnection("jdbc:mysql://"+HOST+":3306"+"/", connProps);
+		}
+		catch(SQLException e){
+			System.out.println("Failed to connect to the database.");
+		} catch (ClassNotFoundException e) {
+			System.out.println("Could not set driver.  ");
+			e.printStackTrace();
+		}
 	}
 
 	public List<Video> getWatchlist(){
@@ -58,7 +39,18 @@ public class DatabaseSupport {
 	}
 	
 	public List<Song> getPlaylist(){
-		return dummyPlaylist;
+		ArrayList<Song> list = new ArrayList<>();
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+		ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Song where OnPlaylist=1");
+		while(rs.next()){
+			list.add(new Song(rs.getString("Title"), rs.getString("Artist"), rs.getString("Genre")));
+		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 	
 	public boolean removeFromWatchlist(String title){
@@ -90,5 +82,23 @@ public class DatabaseSupport {
 	
 	public Song getSong(String title){
 		return dummyFindSong(title, dummySongLibrary);
+	}
+	
+	private Video dummyFindVideo(String title, ArrayList<Video> list){
+		for(Video v : list){
+			if(v.getTitle().equals(title)){
+				return v;
+			}
+		}
+		return null;
+	}
+	
+	private Song dummyFindSong(String title, ArrayList<Song> list){
+		for(Song s : list){
+			if(s.getTitle().equals(title)){
+				return s;
+			}
+		}
+		return null;
 	}
 }
