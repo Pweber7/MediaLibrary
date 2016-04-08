@@ -35,7 +35,19 @@ public class DatabaseSupport {
 	}
 
 	public List<Video> getWatchlist(){
-		return dummyWatchlist;
+		ArrayList<Video> list = new ArrayList<>();
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where OnWatchlist=1");
+			while(rs.next()){
+				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
+						rs.getInt("Runtime"), rs.getInt("TimeWatched")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 	
 	public List<Song> getPlaylist(){
