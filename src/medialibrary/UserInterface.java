@@ -21,7 +21,7 @@ public class UserInterface {
 			}
 			if(action.toUpperCase().equals("ADD"))
 			{
-				System.out.println("Would you like to add to your Video or Audio List? ");
+				System.out.println("Would you like to add to your Video or Audio list? ");
 				action = reader.nextLine();
 				if(action.toUpperCase().equals("VIDEO"))
 				{
@@ -35,6 +35,15 @@ public class UserInterface {
 					action = reader.nextLine();
 					success = sc.addToPlaylist(action);
 				}
+				if(success)
+				{
+					System.out.println("The add was successful.");
+				}
+				else
+				{
+					System.out.println("The add was unsuccessful.");
+				}
+				
 			}
 			else if(action.toUpperCase().equals("REMOVE"))
 			{
@@ -50,8 +59,17 @@ public class UserInterface {
 				{
 					System.out.println("Please type the name of the Song ");
 					action = reader.nextLine();
-					//removeFromPlaylist(action);
+					//success = removeFromPlaylist(action);
 				}
+				if(success)
+				{
+					System.out.println("The remove was successful.");
+				}
+				else
+				{
+					System.out.println("The remove was unsuccessful.");
+				}
+				
 			}
 			else if(action.toUpperCase().equals("LIST"))
 			{
@@ -92,8 +110,7 @@ public class UserInterface {
 					{
 						System.out.println(s.getTitle());
 					}
-				}
-				
+				}				
 			}
 			else if(action.toUpperCase().equals("GET"))
 			{
@@ -104,19 +121,29 @@ public class UserInterface {
 					System.out.println("Please type the title of the Video ");
 					action = reader.nextLine();
 					Video v = sc.getInformationVideo(action);
-					System.out.println(v.getInfo());
+					if(v == null)
+					{
+						System.out.println("That Video does not exist.");
+					}
+					else
+					{
+						System.out.println(v.getInfo());
+					}
 				}
 				else
 				{
 					System.out.println("Please type the name of the Song ");
 					action = reader.nextLine();
 					Song s = sc.getInformationSong(action);
-					System.out.println(s.getInfo());
+					if(s == null)
+					{
+						System.out.println("That song does not exist.");
+					}
+					else
+					{
+						System.out.println(s.getInfo());
+					}
 				}
-			}
-			if(success)
-			{
-				System.out.println("Successful");
 			}
 		}
 		reader.close();
