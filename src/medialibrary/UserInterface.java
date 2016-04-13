@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class UserInterface {
 	public static void main(String[] args)
 	{
-		ArrayList<Video> Vlist = new ArrayList<>();
-		ArrayList<Song> Slist = new ArrayList<>();
+		ArrayList<Video> vList = new ArrayList<>();
+		ArrayList<Song> sList = new ArrayList<>();
 		SystemController sc = new SystemController();
 		Scanner reader = new Scanner(System.in);
 		String action = "";
@@ -76,7 +76,7 @@ public class UserInterface {
 			}
 			else if(action.charAt(0) == 'L')
 			{
-				System.out.println("Would you like to list a list of Videos or Songs");
+				System.out.println("Would you like to list a list of Videos or Songs? ");
 				action = reader.nextLine();
 				action.toUpperCase();
 				if(action.charAt(0) == 'V')
@@ -86,40 +86,54 @@ public class UserInterface {
 					action.toUpperCase();
 					if(action.charAt(0) == 'V')
 					{
-						Vlist = (ArrayList<Video>) sc.listVideoLibrary();
+						vList = (ArrayList<Video>) sc.listVideoLibrary();
 					}
 					else
 					{
-						Vlist = (ArrayList<Video>) sc.listWatchlist();
+						vList = (ArrayList<Video>) sc.listWatchlist();
 					}
-					for(Video v : Vlist)
+					if(vList == null)
 					{
-						System.out.println(v.getTitle());
+						System.out.println("There were no videos that matched.");
+					}
+					else
+					{
+						for(Video v : vList)
+						{
+							System.out.println(v.getTitle());
+						}
 					}
 				
 				}
 				else
 				{
-					System.out.println("Would you like to list the Music Library or your Playlist");
+					System.out.println("Would you like to list the Music Library or your Playlist? ");
 					action = reader.nextLine();
 					action.toUpperCase();
 					if(action.charAt(0) == 'M')
 					{
-						Slist = (ArrayList<Song>) sc.listMusicLibrary();
+						sList = (ArrayList<Song>) sc.listMusicLibrary();
 					}
 					else
 					{
-						Slist = (ArrayList<Song>) sc.listPlaylist();
+						sList = (ArrayList<Song>) sc.listPlaylist();
 					}
-					for(Song s : Slist)
+					if(sList == null)
 					{
-						System.out.println(s.getTitle());
+						System.out.println("There were no videos that matched.");
+					}
+					else
+					{
+						for(Song s : sList)
+						{
+							System.out.println(s.getTitle());
+						}
 					}
 				}				
 			}
 			else if(action.charAt(0) == 'G')
 			{
-				System.out.println("Would you like to info for a Video or Song ");
+				System.out.println("Would you like to info for a Video or Song? ");
 				action = reader.nextLine();
 				action.toUpperCase();
 				if(action.charAt(0) == 'V')
@@ -148,6 +162,89 @@ public class UserInterface {
 					else
 					{
 						System.out.println(s.getInfo());
+					}
+				}
+			}
+			else if(action.equals("SEARCH"))
+			{
+				System.out.println("Would you like to search for a Video or Song? ");
+				action = reader.nextLine();
+				action.toUpperCase();
+				if(action.charAt(0) == 'V')
+				{
+					System.out.println("Would you like to search the Watchlist or Video Library? ");
+					action = reader.nextLine();
+					action.toUpperCase();
+					if(action.charAt(0) == 'W')
+					{
+						System.out.println("Would you like to search by Title, Genre, Rating, Time Remaining, or Runtime? ");
+						action = reader.nextLine();
+						action.toUpperCase();
+						if(action.equals("Title"))
+						{
+							System.out.println("Please type the title of the Video ");
+							action = reader.nextLine();
+							//vList = sc.searchWatchlistTitle(action);								
+						}
+						else if(action.charAt(0) == 'G')
+						{
+							System.out.println("Please type the genre of the Video ");
+							action = reader.nextLine();
+							//vList = sc.searchWatchlistGenre(action);
+						}
+						else if(action.equals("Time Remaining"))
+						{
+							System.out.println("Please type the Time Remaining in minutes of the Video ");
+							action = reader.nextLine();
+							//vList = sc.searchWatchlistTimeRemaining(action);
+						}
+						else if(action.equals("Rating"))
+						{
+							System.out.println("Please type the Rating of the Video ");
+							action = reader.nextLine();
+							//vList = sc.searchWatchlistRating(action);
+						}
+						else if(action.equals("Runtime"))
+						{
+							System.out.println("Please type the Runtime in minutes of the Video ");
+							action = reader.nextLine();
+							//vList = sc.searchWatchlistRuntime(action);
+						}
+					}
+					else
+					{
+						System.out.println("Would you like to search by Title, Genre, Rating, Time Remaining, or Runtime? ");
+						action = reader.nextLine();
+						action.toUpperCase();
+						if(action.charAt(0) == 'T')
+						{
+							System.out.println("Please type the title of the Video ");
+							action = reader.nextLine();
+							//vList = sc.searchVLTitle(action);
+						}
+						else if(action.charAt(0) == 'G')
+						{
+							System.out.println("Please type the genre of the Video ");
+							action = reader.nextLine();
+							//vList = sc.searchVLGenre(action);
+						}
+						else if(action.equals("Rating"))
+						{
+							System.out.println("Please type the Rating of the Video ");
+							action = reader.nextLine();
+							//vList = sc.searchVLRating(action);
+						}						
+					}
+					if(vList == null)
+					{
+						System.out.println("There were no videos that matched.");
+					}
+					else
+					{
+						for(Video v : vList)
+						{
+							System.out.println(v.getTitle());
+						}
 					}
 				}
 			}
