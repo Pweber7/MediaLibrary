@@ -51,4 +51,14 @@ public class MLSystem {
 	{
 		return ds.getSong(name);
 	}
+	
+	public boolean removeFromPlaylist(String name)
+	{
+		Song s = ds.getSong(name);
+		if(s != null && s.isOnPlaylist())
+		{
+			return s.removeFromPlaylist();
+		}
+		return false;
+	}
 }
