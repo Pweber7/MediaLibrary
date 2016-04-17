@@ -58,8 +58,7 @@ public class MLSystem {
 		if(s != null && s.isOnPlaylist())
 		{
 			s.removeFromPlaylist();
-			ds.putSong(name);
-			return true;
+			return ds.putSong(s);
 		}
 		return false;
 	}
