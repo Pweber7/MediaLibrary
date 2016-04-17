@@ -181,13 +181,13 @@ public class DatabaseSupport {
 		}
 		return s;
 	}
-	
+	 
 	public boolean putSong(Song s){
 		Statement stmt;
 		try {
 			stmt = connect.createStatement();
 			stmt.executeUpdate("update "+DBNAME+".Song set OnPlaylist=" + s.isOnPlaylist() + ", Artist='" 
-			+ s.getArtist() + "', Genre='" + s.getGenre + "' where Title='"+s.getTitle()+"'");
+			+ s.getArtist() + "', Genre='" + s.getGenre() + "' where Title='"+s.getTitle()+"'");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
