@@ -193,4 +193,68 @@ public class DatabaseSupport {
 		}
 		return true;
 	}
+	
+	public List<Video> searchVideoLibraryRating(String rating){
+		ArrayList<Video> list = new ArrayList<>();
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where Rating = '" + rating + "'");
+			while(rs.next()){
+				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
+						rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining")));
+			}
+			rs = stmt.executeQuery("select * from "+DBNAME+".TVShow where Rating = '" + rating + "'");
+			while(rs.next()){
+				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
+						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<Video> searchWatchlistRating(String rating){
+		ArrayList<Video> list = new ArrayList<>();
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where OnWatchlist=1 and Rating = '" + rating + "'");
+			while(rs.next()){
+				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
+						rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining")));
+			}
+			rs = stmt.executeQuery("select * from "+DBNAME+".TVShow where OnWatchlist=1 and Rating = '" + rating + "'");
+			while(rs.next()){
+				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
+						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<Video> searchWatchlistGenre(String genre){
+		ArrayList<Video> list = new ArrayList<>();
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where OnWatchlist=1 and Genre = '" + genre + "'");
+			while(rs.next()){
+				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
+						rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining")));
+			}
+			rs = stmt.executeQuery("select * from "+DBNAME+".TVShow where OnWatchlist=1 and Genre = '" + genre + "'");
+			while(rs.next()){
+				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
+						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 }
