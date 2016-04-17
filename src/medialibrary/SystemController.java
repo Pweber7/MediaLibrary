@@ -10,6 +10,11 @@ public class SystemController {
 		return mls.listWatchlist();
 	}
 	
+	public boolean removeFromPlaylist(String name)
+	{
+		return mls.removeFromPlaylist(name);
+	}
+	
 	public boolean removeFromWatchlist(String title){
 		return mls.removeFromWatchlist(title);
 	}

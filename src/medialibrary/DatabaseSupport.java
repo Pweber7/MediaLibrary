@@ -62,7 +62,7 @@ public class DatabaseSupport {
 			stmt = connect.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Song where OnPlaylist=1");
 			while(rs.next()){
-				list.add(new Song(rs.getString("Title"), rs.getString("Artist"), rs.getString("Genre")));
+				list.add(new Song(rs.getString("Title"), rs.getString("Artist"), rs.getString("Genre"), rs.getBoolean("onPlaylist")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -133,7 +133,7 @@ public class DatabaseSupport {
 			stmt = connect.createStatement();
 			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Song");
 			while(rs.next()){
-				list.add(new Song(rs.getString("Title"), rs.getString("Artist"), rs.getString("Genre")));
+				list.add(new Song(rs.getString("Title"), rs.getString("Artist"), rs.getString("Genre"), rs.getBoolean("onPlaylist")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -170,8 +170,9 @@ public class DatabaseSupport {
 		try {
 			stmt = connect.createStatement();
 		ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Song where Title='"+title+"'");
-			if(rs.next()){
-				s = new Song(rs.getString("Title"), rs.getString("Artist"), rs.getString("Genre"));
+			if(rs.next())
+			{
+				s = new Song(rs.getString("Title"), rs.getString("Artist"), rs.getString("Genre"), rs.getBoolean("onPlaylist"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
