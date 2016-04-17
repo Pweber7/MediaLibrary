@@ -190,6 +190,7 @@ public class DatabaseSupport {
 			+ s.getArtist() + "', Genre='" + s.getGenre() + "' where Title='"+s.getTitle()+"'");
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 		return true;
 	}
