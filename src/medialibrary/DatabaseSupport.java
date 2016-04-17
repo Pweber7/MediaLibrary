@@ -78,6 +78,7 @@ public class DatabaseSupport {
 			stmt.executeUpdate("update "+DBNAME+".TVShow set OnWatchlist=0 where Title='"+title+"'");
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 		return true;
 	}
@@ -90,6 +91,7 @@ public class DatabaseSupport {
 			stmt.executeUpdate("update "+DBNAME+".TVShow set OnWatchlist=1 where Title='"+title+"'");
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 		return true;
 	}
@@ -177,5 +179,17 @@ public class DatabaseSupport {
 			e.printStackTrace();
 		}
 		return s;
+	}
+	
+	public boolean putSong(Song s){
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+			stmt.executeUpdate("update "+DBNAME+".Song set OnPlaylist=" + s.isOnPlaylist() + ", Artist='" 
+			+ s.getArtist() + "', Genre='" + s.getGenre + "' where Title='"+s.getTitle()+"'");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 }
