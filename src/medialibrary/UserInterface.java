@@ -198,6 +198,7 @@ public class UserInterface {
 						{
 							System.out.println("Please type the Time Remaining in minutes of the Video ");
 							int length = reader.nextInt();
+							reader.nextLine();
 							vList = (ArrayList<Video>) sc.searchWatchlistTimeRemaining(length);
 						}
 						else if(action.equals("RATING"))
@@ -210,6 +211,7 @@ public class UserInterface {
 						{
 							System.out.println("Please type the Runtime in minutes of the Video ");
 							int length = reader.nextInt();
+							reader.nextLine();
 							vList = (ArrayList<Video>) sc.searchWatchlistRuntime(length);
 						}
 					}
