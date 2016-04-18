@@ -92,7 +92,7 @@ public class UserInterface {
 					{
 						vList = (ArrayList<Video>) sc.listWatchlist();
 					}
-					if(vList == null)
+					if(vList.isEmpty())
 					{
 						System.out.println("There were no videos that matched.");
 					}
@@ -118,7 +118,7 @@ public class UserInterface {
 					{
 						sList = (ArrayList<Song>) sc.listPlaylist();
 					}
-					if(sList == null)
+					if(sList.isEmpty())
 					{
 						System.out.println("There were no videos that matched.");
 					}
@@ -235,7 +235,7 @@ public class UserInterface {
 							//vList = sc.searchVLRating(action);
 						}						
 					}
-					if(vList == null)
+					if(vList.isEmpty())
 					{
 						System.out.println("There were no videos that matched.");
 					}
