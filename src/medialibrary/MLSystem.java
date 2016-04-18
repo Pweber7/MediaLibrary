@@ -52,7 +52,7 @@ public class MLSystem {
 		return ds.getSong(name);
 	}
 	
-	public List<Video> searchVideoLibraryGenra(String genre){
+	public List<Video> searchVideoLibraryGenre(String genre){
 		return ds.searchVideoLibraryGenre(genre);
 	}
 }
