@@ -194,7 +194,7 @@ public class DatabaseSupport {
 			}
 			rs = stmt.executeQuery("Select * from "+DBNAME+".TVShow where Genre='"+genre+"'");
 			while(rs.next()){
-				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("TotalEpisodes"), rs.getInt("TotalSeasons"), rs.getInt("Length")));
+				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length")));
 			}
 		} catch (SQLException e){
 			e.printStackTrace();
