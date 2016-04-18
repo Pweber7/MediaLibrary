@@ -165,7 +165,7 @@ public class UserInterface {
 					}
 				}
 			}
-			else if(action.equals("SEARCH"))
+			else if(action.charAt(0) == ('S'))
 			{
 				System.out.println("Would you like to search for a Video or Song? ");
 				action = reader.nextLine();
