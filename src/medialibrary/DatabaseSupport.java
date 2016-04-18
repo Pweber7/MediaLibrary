@@ -204,20 +204,13 @@ public class DatabaseSupport {
 	
 	public List<Video> searchVideoLibraryTitle(String title){
 		ArrayList<Video> list = new ArrayList<>();
-		Statement stmt;
+		ArrayList<Video> lib = new ArrayList<>();
+		lib = (ArrayList<Video>) listVideoLibrary();
 		
-		try{
-			stmt = connect.createStatement();
-			ResultSet rs = stmt.executeQuery("Select * from "+DBNAME+".Movie where Title='"+title+"'");
-			while(rs.next()){
-				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining")));
+		for(Video v : lib){
+			if(v.getTitle().contains(title)){
+				list.add(v);
 			}
-			rs = stmt.executeQuery("Select * from "+DBNAME+".TVShow where Title='"+title+"'");
-			while(rs.next()){
-				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("TotalEpisodes"), rs.getInt("TotalSeasons"), rs.getInt("Length")));
-			}
-		} catch (SQLException e){
-			e.printStackTrace();
 		}
 		return list;
 	}
