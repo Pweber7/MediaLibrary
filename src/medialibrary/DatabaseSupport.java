@@ -224,7 +224,6 @@ public class DatabaseSupport {
 	
 	public List<Video> searchWatchlistTitle(String title){
 		ArrayList<Video> list = new ArrayList<>();
-		Statement stmt;
 		ArrayList<Video> wList = new ArrayList<>();
 		wList = (ArrayList<Video>) getWatchlist();
 		
