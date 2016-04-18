@@ -51,4 +51,8 @@ public class MLSystem {
 	{
 		return ds.getSong(name);
 	}
+	
+	public List<Video> searchVideoLibraryGenra(String genre){
+		return ds.searchVideoLibraryGenre(genre);
+	}
 }
