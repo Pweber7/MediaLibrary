@@ -174,12 +174,12 @@ public class UserInterface {
 				{
 					System.out.println("Would you like to search the Watchlist or Video Library? ");
 					action = reader.nextLine();
-					action.toUpperCase(); 
+					action = action.toUpperCase(); 
 					if(action.charAt(0) == 'W')
 					{
 						System.out.println("Would you like to search by Title, Genre, Rating, Time Remaining, or Runtime? ");
 						action = reader.nextLine();
-						action.toUpperCase();
+						action = action.toUpperCase();
 						if(action.equals("TITLE"))
 						{
 							System.out.println("Please type the title of the Video ");
@@ -215,7 +215,7 @@ public class UserInterface {
 					{
 						System.out.println("Would you like to search by Title, Genre, Rating, Time Remaining, or Runtime? ");
 						action = reader.nextLine();
-						action.toUpperCase();
+						action = action.toUpperCase();
 						if(action.charAt(0) == 'T')
 						{
 							System.out.println("Please type the title of the Video ");
