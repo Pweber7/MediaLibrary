@@ -27,6 +27,41 @@ public class MLSystem {
 		return ds.listMusicLibrary();
 	}
 	
+	public List<Video> searchWatchlistTitle(String title)
+	{
+		return ds.searchWatchlistTitle(title);
+	}
+	
+	public List<Video> searchVideoLibraryTitle(String title)
+	{
+		return ds.searchVideoLibraryTitle(title);
+	}
+	
+	public List<Video> searchWatchlistRating(String rating)
+	{
+		return ds.searchWatchlistRating(rating);
+	}
+	
+	public List<Video> searchVideoLibraryRating(String rating)
+	{
+		return ds.searchVideoLibraryRating(rating);
+	}
+	
+	public List<Video> searchWatchlistGenre(String genre)
+	{
+		return ds.searchWatchlistGenre(genre);
+	}
+	
+	public List<Video> searchWatchlistRuntime(int runtime)
+	{
+		return ds.searchWatchlistRuntime(runtime);
+	}
+	
+	public List<Video> searchWatchlistTimeRemaining(int timeRemaining)
+	{
+		return ds.searchWatchlistTimeRemaining(timeRemaining);
+	}
+	
 	public boolean addToPlaylist(String name)
 	{
 		return ds.addToPlaylist(name);
@@ -52,7 +87,19 @@ public class MLSystem {
 		return ds.getSong(name);
 	}
 	
+<<<<<<< HEAD
 	public List<Video> searchVideoLibraryGenre(String genre){
 		return ds.searchVideoLibraryGenre(genre);
+=======
+	public boolean removeFromPlaylist(String name)
+	{
+		Song s = ds.getSong(name);
+		if(s != null && s.isOnPlaylist())
+		{
+			s.removeFromPlaylist();
+			return ds.putSong(s);
+		}
+		return false;
+>>>>>>> branch 'master' of https://github.com/Pweber7/MediaLibrary
 	}
 }

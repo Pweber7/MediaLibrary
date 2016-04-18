@@ -10,13 +10,18 @@ public class SystemController {
 		return mls.listWatchlist();
 	}
 	
+	public boolean removeFromPlaylist(String name)
+	{
+		return mls.removeFromPlaylist(name);
+	}
+	
 	public boolean removeFromWatchlist(String title){
 		return mls.removeFromWatchlist(title);
 	}
 	
 	public List<Video> listVideoLibrary(){
 		return mls.listVideoLibrary();
-	}
+	}	
 	
 	public Video getInformationVideo(String title){
 		return mls.getInformationVideo(title);
@@ -36,6 +41,41 @@ public class SystemController {
 	
 	public List<Song> listPlaylist(){
 		return mls.listPlaylist();
+	}
+	
+	public List<Video> searchWatchlistTitle(String title)
+	{
+		return mls.searchWatchlistTitle(title);
+	}
+	
+	public List<Video> searchVideoLibraryTitle(String title)
+	{
+		return mls.searchVideoLibraryTitle(title);
+	}
+	
+	public List<Video> searchWatchlistRating(String rating)
+	{
+		return mls.searchWatchlistRating(rating);
+	}
+	
+	public List<Video> searchVideoLibaryRating(String rating)
+	{
+		return mls.searchVideoLibraryRating(rating);
+	}
+	
+	public List<Video> searchWatchlistGenre(String genre)
+	{
+		return mls.searchWatchlistGenre(genre);
+	}
+	
+	public List<Video> searchWatchlistRuntime(int runtime)
+	{
+		return mls.searchWatchlistRuntime(runtime);
+	}
+	
+	public List<Video> searchWatchlistTimeRemaining(int timeRemaining)
+	{
+		return mls.searchWatchlistTimeRemaining(timeRemaining);
 	}
 	
 	public boolean addToPlaylist(String title){
