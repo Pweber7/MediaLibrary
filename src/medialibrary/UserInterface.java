@@ -180,7 +180,7 @@ public class UserInterface {
 						System.out.println("Would you like to search by Title, Genre, Rating, Time Remaining, or Runtime? ");
 						action = reader.nextLine();
 						action.toUpperCase();
-						if(action.equals("Title"))
+						if(action.equals("TITLE"))
 						{
 							System.out.println("Please type the title of the Video ");
 							action = reader.nextLine();
@@ -192,19 +192,19 @@ public class UserInterface {
 							action = reader.nextLine();
 							//vList = sc.searchWatchlistGenre(action);
 						}
-						else if(action.equals("Time Remaining"))
+						else if(action.equals("TIME REMAINING"))
 						{
 							System.out.println("Please type the Time Remaining in minutes of the Video ");
 							action = reader.nextLine();
 							//vList = sc.searchWatchlistTimeRemaining(action);
 						}
-						else if(action.equals("Rating"))
+						else if(action.equals("RATING"))
 						{
 							System.out.println("Please type the Rating of the Video ");
 							action = reader.nextLine();
 							//vList = sc.searchWatchlistRating(action);
 						}
-						else if(action.equals("Runtime"))
+						else if(action.equals("RUNTIME"))
 						{
 							System.out.println("Please type the Runtime in minutes of the Video ");
 							action = reader.nextLine();
@@ -228,7 +228,7 @@ public class UserInterface {
 							action = reader.nextLine();
 							//vList = sc.searchVLGenre(action);
 						}
-						else if(action.equals("Rating"))
+						else if(action.equals("RATING"))
 						{
 							System.out.println("Please type the Rating of the Video ");
 							action = reader.nextLine();
