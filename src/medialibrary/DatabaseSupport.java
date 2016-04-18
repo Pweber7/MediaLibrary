@@ -181,6 +181,60 @@ public class DatabaseSupport {
 		}
 		return s;
 	}
+	
+	public List<Video> searchVideoLibraryGenre(String genre){
+		ArrayList<Video> list = new ArrayList<>();
+		Statement stmt;
+		
+		try{
+			stmt = connect.createStatement();
+			ResultSet rs = stmt.executeQuery("Select * from "+DBNAME+".Movie where Genre='"+genre+"'");
+			while(rs.next()){
+				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining")));
+			}
+			rs = stmt.executeQuery("Select * from "+DBNAME+".TVShow where Genre='"+genre+"'");
+			while(rs.next()){
+				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("TotalEpisodes"), rs.getInt("TotalSeasons"), rs.getInt("Length")));
+			}
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<Video> searchVideoLibraryTitle(String title){
+		ArrayList<Video> list = new ArrayList<>();
+		Statement stmt;
+		
+		try{
+			stmt = connect.createStatement();
+			ResultSet rs = stmt.executeQuery("Select * from "+DBNAME+".Movie where Title='"+title+"'");
+			while(rs.next()){
+				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining")));
+			}
+			rs = stmt.executeQuery("Select * from "+DBNAME+".TVShow where Title='"+title+"'");
+			while(rs.next()){
+				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("TotalEpisodes"), rs.getInt("TotalSeasons"), rs.getInt("Length")));
+			}
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<Video> searchWatchlistTitle(String title){
+		ArrayList<Video> list = new ArrayList<>();
+		Statement stmt;
+		ArrayList<Video> wList = new ArrayList<>();
+		wList = (ArrayList<Video>) getWatchlist();
+		
+		for(Video v : wList){
+			if(v.getTitle().contains(title)){
+				list.add(v);
+			}
+		}
+		return list;
+	}
 	 
 	public boolean putSong(Song s){
 		Statement stmt;

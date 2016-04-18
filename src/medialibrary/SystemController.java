@@ -81,4 +81,8 @@ public class SystemController {
 	public boolean addToPlaylist(String title){
 		return mls.addToPlaylist(title);
 	}
+	
+	public List<Video> searchVideoLibraryGenre(String genre){
+		return mls.searchVideoLibraryGenre(genre);
+	}
 }

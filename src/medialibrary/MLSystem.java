@@ -87,6 +87,10 @@ public class MLSystem {
 		return ds.getSong(name);
 	}
 	
+<<<<<<< HEAD
+	public List<Video> searchVideoLibraryGenre(String genre){
+		return ds.searchVideoLibraryGenre(genre);
+=======
 	public boolean removeFromPlaylist(String name)
 	{
 		Song s = ds.getSong(name);
@@ -96,5 +100,6 @@ public class MLSystem {
 			return ds.putSong(s);
 		}
 		return false;
+>>>>>>> branch 'master' of https://github.com/Pweber7/MediaLibrary
 	}
 }
