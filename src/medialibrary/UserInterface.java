@@ -15,7 +15,7 @@ public class UserInterface {
 		{
 			System.out.println("What would you like to do? ");
 			action = reader.nextLine();
-			action.toUpperCase();
+			action = action.toUpperCase();
 			if(action.charAt(0) == 'Q')
 			{
 				break;
@@ -24,7 +24,7 @@ public class UserInterface {
 			{
 				System.out.println("Would you like to add to your Video or Audio list? ");
 				action = reader.nextLine();
-				action.toUpperCase();
+				action = action.toUpperCase();
 				if(action.charAt(0) == 'V')
 				{
 					System.out.println("Please type the title of the video ");
@@ -51,7 +51,7 @@ public class UserInterface {
 			{
 				System.out.println("Would you like to remove a Video or Song?");
 				action = reader.nextLine();
-				action.toUpperCase();
+				action = action.toUpperCase();
 				if(action.charAt(0) == 'V')
 				{
 					System.out.println("Please type the title of the Video ");
@@ -78,7 +78,7 @@ public class UserInterface {
 			{
 				System.out.println("Would you like to list a list of Videos or Songs? ");
 				action = reader.nextLine();
-				action.toUpperCase();
+				action = action.toUpperCase();
 				if(action.charAt(0) == 'V')
 				{
 					System.out.println("Would you like to list the Video Library or your Watchlist>");
@@ -109,7 +109,7 @@ public class UserInterface {
 				{
 					System.out.println("Would you like to list the Music Library or your Playlist? ");
 					action = reader.nextLine();
-					action.toUpperCase();
+					action = action.toUpperCase();
 					if(action.charAt(0) == 'M')
 					{
 						sList = (ArrayList<Song>) sc.listMusicLibrary();
@@ -135,7 +135,7 @@ public class UserInterface {
 			{
 				System.out.println("Would you like to info for a Video or Song? ");
 				action = reader.nextLine();
-				action.toUpperCase();
+				action = action.toUpperCase();
 				if(action.charAt(0) == 'V')
 				{
 					System.out.println("Please type the title of the Video ");
@@ -169,7 +169,7 @@ public class UserInterface {
 			{
 				System.out.println("Would you like to search for a Video or Song? ");
 				action = reader.nextLine();
-				action.toUpperCase();
+				action = action.toUpperCase();
 				if(action.charAt(0) == 'V')
 				{
 					System.out.println("Would you like to search the Watchlist or Video Library? ");
