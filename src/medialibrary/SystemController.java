@@ -58,7 +58,7 @@ public class SystemController {
 		return mls.searchWatchlistRating(rating);
 	}
 	
-	public List<Video> searchVideoLibaryRating(String rating)
+	public List<Video> searchVideoLibraryRating(String rating)
 	{
 		return mls.searchVideoLibraryRating(rating);
 	}

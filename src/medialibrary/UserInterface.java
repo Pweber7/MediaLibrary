@@ -62,7 +62,7 @@ public class UserInterface {
 				{
 					System.out.println("Please type the name of the Song ");
 					action = reader.nextLine();
-					//success = removeFromPlaylist(action);
+					success = sc.removeFromPlaylist(action);
 				}
 				if(success)
 				{
@@ -184,31 +184,31 @@ public class UserInterface {
 						{
 							System.out.println("Please type the title of the Video ");
 							action = reader.nextLine();
-							//vList = sc.searchWatchlistTitle(action);								
+							vList = (ArrayList<Video>) sc.searchWatchlistTitle(action);								
 						}
 						else if(action.charAt(0) == 'G')
 						{
 							System.out.println("Please type the genre of the Video ");
 							action = reader.nextLine();
-							//vList = sc.searchWatchlistGenre(action);
+							vList = (ArrayList<Video>) sc.searchWatchlistGenre(action);
 						}
 						else if(action.equals("TIME REMAINING"))
 						{
 							System.out.println("Please type the Time Remaining in minutes of the Video ");
-							action = reader.nextLine();
-							//vList = sc.searchWatchlistTimeRemaining(action);
+							int length = reader.nextInt();
+							vList = (ArrayList<Video>) sc.searchWatchlistTimeRemaining(length);
 						}
 						else if(action.equals("RATING"))
 						{
 							System.out.println("Please type the Rating of the Video ");
 							action = reader.nextLine();
-							//vList = sc.searchWatchlistRating(action);
+							vList = (ArrayList<Video>) sc.searchWatchlistRating(action);
 						}
 						else if(action.equals("RUNTIME"))
 						{
 							System.out.println("Please type the Runtime in minutes of the Video ");
-							action = reader.nextLine();
-							//vList = sc.searchWatchlistRuntime(action);
+							int length = reader.nextInt();
+							vList = (ArrayList<Video>) sc.searchWatchlistRuntime(length);
 						}
 					}
 					else
@@ -220,19 +220,19 @@ public class UserInterface {
 						{
 							System.out.println("Please type the title of the Video ");
 							action = reader.nextLine();
-							//vList = sc.searchVLTitle(action);
+							vList = (ArrayList<Video>) sc.searchVideoLibraryTitle(action);
 						}
 						else if(action.charAt(0) == 'G')
 						{
 							System.out.println("Please type the genre of the Video ");
 							action = reader.nextLine();
-							//vList = sc.searchVLGenre(action);
+							vList = (ArrayList<Video>) sc.searchVideoLibraryGenre(action);
 						}
 						else if(action.equals("RATING"))
 						{
 							System.out.println("Please type the Rating of the Video ");
 							action = reader.nextLine();
-							//vList = sc.searchVLRating(action);
+							vList = (ArrayList<Video>) sc.searchVideoLibraryRating(action);
 						}						
 					}
 					if(vList.isEmpty())
