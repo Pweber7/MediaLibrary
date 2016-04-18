@@ -27,6 +27,41 @@ public class MLSystem {
 		return ds.listMusicLibrary();
 	}
 	
+	public List<Video> searchWatchlistTitle(String title)
+	{
+		return ds.searchWatchlistTitle(title);
+	}
+	
+	public List<Video> searchVideoLibraryTitle(String title)
+	{
+		return ds.searchVideoLibraryTitle(title);
+	}
+	
+	public List<Video> searchWatchlistRating(String rating)
+	{
+		return ds.searchWatchlistRating(rating);
+	}
+	
+	public List<Video> searchVideoLibraryRating(String rating)
+	{
+		return ds.searchVideoLibraryRating(rating);
+	}
+	
+	public List<Video> searchWatchlistGenre(String genre)
+	{
+		return ds.searchWatchlistGenre(genre);
+	}
+	
+	public List<Video> searchWatchlistRuntime(int runtime)
+	{
+		return ds.searchWatchlistRuntime(runtime);
+	}
+	
+	public List<Video> searchWatchlistTimeRemaining(int timeRemaining)
+	{
+		return ds.searchWatchlistTimeRemaining(timeRemaining);
+	}
+	
 	public boolean addToPlaylist(String name)
 	{
 		return ds.addToPlaylist(name);
@@ -58,8 +93,7 @@ public class MLSystem {
 		if(s != null && s.isOnPlaylist())
 		{
 			s.removeFromPlaylist();
-			ds.putSong(name);
-			return true;
+			return ds.putSong(s);
 		}
 		return false;
 	}
