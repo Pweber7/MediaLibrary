@@ -213,7 +213,7 @@ public class UserInterface {
 					}
 					else
 					{
-						System.out.println("Would you like to search by Title, Genre, Rating, Time Remaining, or Runtime? ");
+						System.out.println("Would you like to search by Title, Genre, Rating? ");
 						action = reader.nextLine();
 						action = action.toUpperCase();
 						if(action.charAt(0) == 'T')
