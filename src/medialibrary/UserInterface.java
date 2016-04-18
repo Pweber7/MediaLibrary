@@ -228,7 +228,7 @@ public class UserInterface {
 							action = reader.nextLine();
 							vList = (ArrayList<Video>) sc.searchVideoLibraryGenre(action);
 						}
-						else if(action.equals("RATING"))
+						else if(action.charAt(0) == 'R')
 						{
 							System.out.println("Please type the Rating of the Video ");
 							action = reader.nextLine();
