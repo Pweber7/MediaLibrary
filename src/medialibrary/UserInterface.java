@@ -13,6 +13,8 @@ public class UserInterface {
 		boolean success = false;
 		while(true)
 		{
+			vList.clear();
+			sList.clear();
 			System.out.println("What would you like to do? ");
 			action = reader.nextLine();
 			action = action.toUpperCase();
