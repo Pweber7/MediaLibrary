@@ -16,4 +16,10 @@ public class Movie extends Video{
 		info += vTitle + "\n" + vGenre + "\n" + vRating + "\n" + mTimeWatched + " / " + mRuntime + "\n" + vDescription + "\n";
 		return info;
 	}
+	
+	@Override
+	public boolean setFullyWatched(){
+		mTimeWatched = mRuntime;
+		return true;
+	}
 }
