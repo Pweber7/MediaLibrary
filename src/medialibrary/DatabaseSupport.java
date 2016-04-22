@@ -403,4 +403,28 @@ public class DatabaseSupport {
 		}
 		return list;
 	}
+	
+	public boolean putVideo(Video v){
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+			if(v.getClass()==Movie.class){
+				Movie m = (Movie)v;
+				stmt.executeUpdate("update "+DBNAME+".Movie set OnWatchlist=" + m.isOnWatchlist() + ", Genre='"
+					+ m.getGenre() + "', Rating='" + m.getRating() + "', Description='" + m.getDescription() + 
+					"', Runtime=" + m.getRuntime() + ", TimeRemaining="+ (m.getRuntime()-m.getTimeWatched()) + " where Title='"+ m.getTitle() + "'");
+			}
+			else{
+				TVShow t = (TVShow) v;
+				stmt.executeUpdate("update "+DBNAME+".TVShow set OnWatchlist=" + t.isOnWatchlist() + ", Genre='"
+						+ t.getGenre() + "', Rating='" + t.getRating() + "', Description='" + t.getDescription() + 
+						"', Episodes=" + t.getTotalEpisodes() + ", Seasons=" + t.getTotalSeasons() + ", EpisodesWatched="
+						+ t.getEpisodes() + ", SeasonsWatched=" + t.getSeasons() + " where Title='"+ t.getTitle() + "'");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 }
