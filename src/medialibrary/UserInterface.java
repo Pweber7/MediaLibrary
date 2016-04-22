@@ -258,7 +258,9 @@ public class UserInterface {
 					action = action.toUpperCase();
 					if(action.charAt(0) == 'P')
 					{
-						
+						System.out.println("What Song would you like to search for? ");
+						action = reader.nextLine();
+						//sc.searchPlaylistTitle(action);
 					}
 					else
 					{
@@ -267,20 +269,33 @@ public class UserInterface {
 						action = action.toUpperCase();
 						if(action.charAt(0) == 'N')
 						{
-							
+							System.out.println("What Song would you like to search for? ");
+							sList = (ArrayList<Song>) sc.searchSongLibraryTitle(action);
 						}
 						else if(action.charAt(0) == 'A')
 						{
 							System.out.println("What Artist would you like to search for? ");
 							action = reader.nextLine();
-							action = action.toUpperCase();
-							//sList = sc.searchSongLibaryArtist(action);							}
+							sList = (ArrayList<Song>) sc.searchSongLibraryArtist(action);							
 						}
 						else
 						{
-							
+							System.out.println("What Genre would you like to search for? ");
+							sList = (ArrayList<Song>) sc.searchSongLibraryGenre(action);
 						}
 					}
+					if(sList.isEmpty())
+					{
+						System.out.println("There were no songs that matched.");
+					}
+					else
+					{
+						for(Song s: sList)
+						{
+							System.out.println(s.getTitle());
+						}
+					}
+					
 					
 				}
 			}
