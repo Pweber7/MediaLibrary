@@ -42,4 +42,6 @@ public abstract class Video {
 	public String getTitle(){
 		return vTitle;
 	}
+	
+	public abstract boolean setFullyWatched();
 }

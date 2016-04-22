@@ -17,6 +17,7 @@ public class Movie extends Video{
 		return info;
 	}
 	
+
 	public boolean editTimeWatched(int minutes)
 	{
 		mTimeWatched += minutes;
@@ -24,6 +25,12 @@ public class Movie extends Video{
 		{
 			mTimeWatched = mRuntime;
 		}
+		return true;
+	}
+	
+	@Override
+	public boolean setFullyWatched(){
+		mTimeWatched = mRuntime;
 		return true;
 	}
 }

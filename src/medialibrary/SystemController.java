@@ -95,4 +95,11 @@ public class SystemController {
 	{
 		return mls.searchSongLibraryArtist(artist);
 	}
+	public List<Song> searchSongLibraryGenre(String genre){
+		return mls.searchSongLibraryGenre(genre);
+	}
+	
+	public List<Song> searchSongLibraryTitle(String title){
+		return mls.searchSongLibraryTitle(title);
+	}
 }

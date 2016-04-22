@@ -30,4 +30,10 @@ public class TVShow extends Video{
 		return s;
 	}
 
+	@Override
+	public boolean setFullyWatched(){
+		tvEpisodes = tvTotalEpisodes;
+		tvSeasons = tvTotalSeasons;
+		return true;
+	}
 }

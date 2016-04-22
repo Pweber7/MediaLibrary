@@ -118,4 +118,11 @@ public class MLSystem {
 	{
 		return ds.searchSongLibraryArtist(artist);
 	}
+	public List<Song> searchSongLibraryGenre(String genre){
+		return ds.searchSongLibraryGenre(genre);
+	}
+	
+	public List<Song> searchSongLibraryTitle(String title){
+		return ds.searchSongLibraryTitle(title);
+	}
 }
