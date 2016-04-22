@@ -125,4 +125,24 @@ public class MLSystem {
 	public List<Song> searchSongLibraryTitle(String title){
 		return ds.searchSongLibraryTitle(title);
 	}
+	
+	public boolean editNumberEpisodesWatched(String title, int episodes){
+		Video v = ds.getVideo(title);
+		if(v != null && v.isOnWatchlist() && v.getClass()==TVShow.class){
+			TVShow t = (TVShow) v;
+			t.setEpisodes(episodes);
+			return ds.putVideo(t);
+		}
+		return false;
+	}
+	
+	public boolean editNumberSeasonsWatched(String title, int seasons){
+		Video v = ds.getVideo(title);
+		if(v != null && v.isOnWatchlist() && v.getClass()==TVShow.class){
+			TVShow t = (TVShow) v;
+			t.setSeasons(seasons);
+			return ds.putVideo(t);
+		}
+		return false;
+	}
 }

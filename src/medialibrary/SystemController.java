@@ -102,4 +102,12 @@ public class SystemController {
 	public List<Song> searchSongLibraryTitle(String title){
 		return mls.searchSongLibraryTitle(title);
 	}
+	
+	public boolean editNumberEpisodesWatched(String title, int episodes){
+		return mls.editNumberEpisodesWatched(title, episodes);
+	}
+	
+	public boolean editNumberSeasonsWatched(String title, int seasons){
+		return mls.editNumberSeasonsWatched(title, seasons);
+	}
 }
