@@ -85,4 +85,12 @@ public class SystemController {
 	public List<Video> searchVideoLibraryGenre(String genre){
 		return mls.searchVideoLibraryGenre(genre);
 	}
+	
+	public List<Song> searchSongLibraryGenre(String genre){
+		return mls.searchSongLibraryGenre(genre);
+	}
+	
+	public List<Song> searchSongLibraryTitle(String title){
+		return mls.searchSongLibraryTitle(title);
+	}
 }
