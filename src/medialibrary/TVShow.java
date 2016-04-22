@@ -8,8 +8,8 @@ public class TVShow extends Video{
 	private int tvTotalSeasons;
 	private int episodeLength;
 	
-	public TVShow(String title, String rating, String genre, String description, int episodes, int seasons, int totalEpisodes, int totalSeasons, int length) {
-		super(title, rating, genre, description);
+	public TVShow(String title, String rating, String genre, String description, int episodes, int seasons, int totalEpisodes, int totalSeasons, int length, boolean onWatchlist) {
+		super(title, rating, genre, description, onWatchlist);
 		tvEpisodes = episodes;
 		tvSeasons = seasons;
 		tvTotalEpisodes = totalEpisodes;

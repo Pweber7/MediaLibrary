@@ -42,12 +42,12 @@ public class DatabaseSupport {
 			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where OnWatchlist=1");
 			while(rs.next()){
 				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining")));
+						rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining"), rs.getBoolean("onWatchlist")));
 			}
 			rs = stmt.executeQuery("select * from "+DBNAME+".TVShow where OnWatchlist=1");
 			while(rs.next()){
 				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length")));
+						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length"), rs.getBoolean("onWatchlist")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -115,12 +115,12 @@ public class DatabaseSupport {
 			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie");
 			while(rs.next()){
 				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("Runtime"), rs.getInt("Runtime")-rs.getInt("TimeRemaining")));
+						rs.getInt("Runtime"), rs.getInt("Runtime")-rs.getInt("TimeRemaining"), rs.getBoolean("onWatchlist")));
 			}
 			rs = stmt.executeQuery("select * from "+DBNAME+".TVShow");
 			while(rs.next()){
 				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length")));
+						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length"), rs.getBoolean("onWatchlist")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -151,13 +151,13 @@ public class DatabaseSupport {
 			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where Title='"+title+"'");
 			if(rs.next()){
 				v = new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("Runtime"), rs.getInt("Runtime")-rs.getInt("TimeRemaining"));
+						rs.getInt("Runtime"), rs.getInt("Runtime")-rs.getInt("TimeRemaining"), rs.getBoolean("onWatchlist"));
 			}
 			else{
 				rs = stmt.executeQuery("select * from "+DBNAME+".TVShow where Title='"+title+"'");
 				if(rs.next()){
 					v = new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-							rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length"));
+							rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length"), rs.getBoolean("onWatchlist"));
 				}
 			}
 		} catch (SQLException e) {
@@ -190,11 +190,11 @@ public class DatabaseSupport {
 			stmt = connect.createStatement();
 			ResultSet rs = stmt.executeQuery("Select * from "+DBNAME+".Movie where Genre='"+genre+"'");
 			while(rs.next()){
-				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining")));
+				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining"), rs.getBoolean("onWatchlist")));
 			}
 			rs = stmt.executeQuery("Select * from "+DBNAME+".TVShow where Genre='"+genre+"'");
 			while(rs.next()){
-				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length")));
+				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length"), rs.getBoolean("onWatchlist")));
 			}
 		} catch (SQLException e){
 			e.printStackTrace();
@@ -249,12 +249,12 @@ public class DatabaseSupport {
 			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where OnWatchlist=1 and Runtime<="+runtime);
 			while(rs.next()){
 				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("Runtime"), rs.getInt("Runtime")-rs.getInt("TimeRemaining")));
+						rs.getInt("Runtime"), rs.getInt("Runtime")-rs.getInt("TimeRemaining"), rs.getBoolean("onWatchlist")));
 			}
 			rs = stmt.executeQuery("select * from "+DBNAME+".TVShow where OnWatchlist=1 and Length<="+runtime);
 			while(rs.next()){
 				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length")));
+						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length"), rs.getBoolean("onWatchlist")));
 			}
 		} catch (SQLException e){
 			e.printStackTrace();
@@ -270,12 +270,12 @@ public class DatabaseSupport {
 			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where OnWatchlist=1 and TimeRemaining<="+timeRemaining);
 			while(rs.next()){
 				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("Runtime"), rs.getInt("Runtime")-rs.getInt("TimeRemaining")));
+						rs.getInt("Runtime"), rs.getInt("Runtime")-rs.getInt("TimeRemaining"), rs.getBoolean("onWatchlist")));
 			}
 			rs = stmt.executeQuery("select * from "+DBNAME+".TVShow where OnWatchlist=1 and Length<="+timeRemaining);
 			while(rs.next()){
 				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length")));
+						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length"), rs.getBoolean("onWatchlist")));
 			}
 		} catch (SQLException e){
 			e.printStackTrace();
@@ -291,12 +291,12 @@ public class DatabaseSupport {
 			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where Rating = '" + rating + "'");
 			while(rs.next()){
 				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining")));
+						rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining"), rs.getBoolean("onWatchlist")));
 			}
 			rs = stmt.executeQuery("select * from "+DBNAME+".TVShow where Rating = '" + rating + "'");
 			while(rs.next()){
 				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length")));
+						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length"), rs.getBoolean("onWatchlist")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -312,12 +312,12 @@ public class DatabaseSupport {
 			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where OnWatchlist=1 and Rating = '" + rating + "'");
 			while(rs.next()){
 				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining")));
+						rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining"), rs.getBoolean("onWatchlist")));
 			}
 			rs = stmt.executeQuery("select * from "+DBNAME+".TVShow where OnWatchlist=1 and Rating = '" + rating + "'");
 			while(rs.next()){
 				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length")));
+						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length"), rs.getBoolean("onWatchlist")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -333,16 +333,22 @@ public class DatabaseSupport {
 			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where OnWatchlist=1 and Genre = '" + genre + "'");
 			while(rs.next()){
 				list.add(new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining")));
+						rs.getInt("Runtime"), rs.getInt("Runtime") - rs.getInt("TimeRemaining"), rs.getBoolean("onWatchlist")));
 			}
 			rs = stmt.executeQuery("select * from "+DBNAME+".TVShow where OnWatchlist=1 and Genre = '" + genre + "'");
 			while(rs.next()){
 				list.add(new TVShow(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
-						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length")));
+						rs.getInt("EpisodesWatched"), rs.getInt("SeasonsWatched"), rs.getInt("Episodes"), rs.getInt("Seasons"), rs.getInt("Length"), rs.getBoolean("onWatchlist")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return list;
+	}
+	
+	public List<Song> searchSongLibraryArtist(String artist)
+	{
+		ArrayList<Song> list = new ArrayList<>();
 		return list;
 	}
 }

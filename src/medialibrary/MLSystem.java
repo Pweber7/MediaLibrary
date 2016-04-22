@@ -101,4 +101,21 @@ public class MLSystem {
 		}
 		return false;
 	}
+	
+	public boolean editTimeVideoWatched(String title, int minutes)
+	{
+		Movie m = (Movie) ds.getVideo(title);
+		if(m != null && m.isOnWatchlist())
+		{
+			m.editTimeWatched(minutes);
+			//return ds.putMovie(m);
+		}
+		
+		return false;
+	}
+	
+	public List<Song> searchSongLibraryArtist(String artist)
+	{
+		return ds.searchSongLibraryArtist(artist);
+	}
 }
