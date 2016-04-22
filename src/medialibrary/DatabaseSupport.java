@@ -373,4 +373,25 @@ public class DatabaseSupport {
 		}
 		return list;
 	}
+	
+	public boolean putVideo(Video v){
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+			if(v.getClass()==Movie.class){
+				Movie m = (Movie)v;
+				stmt.executeUpdate("update "+DBNAME+".Movie set OnWatchlist=" + m.isOnWatchlist() + ", Genre='"
+					+ m.getGenre() + "', Rating='" + m.getRating() + "', Description='" + m.getDescription + );
+			}
+			else{
+				
+			}
+			stmt.executeUpdate("update "+DBNAME+".Song set OnPlaylist=" + .isOnPlaylist() + ", Artist='" 
+			+ s.getArtist() + "', Genre='" + s.getGenre() + "' where Title='"+s.getTitle()+"'");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 }
