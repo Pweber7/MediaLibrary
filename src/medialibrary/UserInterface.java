@@ -319,6 +319,28 @@ public class UserInterface {
 						success = sc.setTimeWatched(title, minutes);
 					}
 				}
+				else
+				{
+					System.out.println("What Tv Show would you like to edit? ");						
+					String title = reader.nextLine();
+					System.out.println("What would you like to edit about "+ title + " ?");
+					action = reader.nextLine();
+					action = action.toUpperCase();
+					if(action.charAt(0) == 'S')
+					{
+						System.out.println("How many seasons did you watch? ");
+						int seasons = reader.nextInt();
+						reader.nextLine();
+						success = sc.editNumberSeasonsWatched(title, seasons);
+					}
+					else
+					{
+						System.out.println("How many episodes did you watch? ");
+						int episodes = reader.nextInt();
+						reader.nextLine();
+						success = sc.editNumberEpisodesWatched(title, episodes);
+					}
+				}
 			}
 		}
 		reader.close();
