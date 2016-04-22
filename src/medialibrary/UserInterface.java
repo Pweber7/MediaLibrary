@@ -251,6 +251,59 @@ public class UserInterface {
 						}
 					}
 				}
+				else
+				{
+					System.out.println("Would you like to search the Playlist or Song Library? ");
+					action = reader.nextLine();
+					action = action.toUpperCase();
+					if(action.charAt(0) == 'P')
+					{
+						
+					}
+					else
+					{
+						System.out.println("Would you like to search for a song by Name, Artist, or Genre? ");
+						action = reader.nextLine();
+						action = action.toUpperCase();
+						if(action.charAt(0) == 'N')
+						{
+							
+						}
+						else if(action.charAt(0) == 'A')
+						{
+							System.out.println("What Artist would you like to search for? ");
+							action = reader.nextLine();
+							action = action.toUpperCase();
+							//sList = sc.searchSongLibaryArtist(action);							}
+						}
+						else
+						{
+							
+						}
+					}
+					
+				}
+			}
+			else if(action.charAt(0) == 'E')
+			{
+				System.out.println("What would you like to edit a Movie or TV show? ");
+				action = reader.nextLine();
+				action = action.toUpperCase();
+				if(action.charAt(0) == 'M')
+				{
+					System.out.println("What movie would you like to edit? ");						
+					String title = reader.nextLine();
+					System.out.println("What would you like to edit about "+ title + " ?");
+					action = reader.nextLine();
+					action = action.toUpperCase();
+					if(action == "TIME WATCHED")
+					{
+						System.out.println("How many minutes did you watch? ");
+						int minutes = reader.nextInt();
+						reader.nextLine();
+						success = sc.editTimeWatched(title, minutes);
+					}
+				}
 			}
 		}
 		reader.close();
