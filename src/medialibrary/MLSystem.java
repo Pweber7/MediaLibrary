@@ -108,7 +108,7 @@ public class MLSystem {
 		if(m != null && m.isOnWatchlist())
 		{
 			m.setTimeWatched(minutes);
-			//return ds.putMovie(m);
+			return ds.putVideo(m);
 		}
 		
 		return false;
