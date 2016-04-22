@@ -86,6 +86,15 @@ public class SystemController {
 		return mls.searchVideoLibraryGenre(genre);
 	}
 	
+	public boolean setTimeWatched(String title, int minutes)
+	{
+		return mls.setTimeVideoWatched(title, minutes);
+	}
+	
+	public List<Song> searchSongLibraryArtist(String artist)
+	{
+		return mls.searchSongLibraryArtist(artist);
+	}
 	public List<Song> searchSongLibraryGenre(String genre){
 		return mls.searchSongLibraryGenre(genre);
 	}
