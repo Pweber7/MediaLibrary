@@ -54,6 +54,18 @@ public class TVShow extends Video{
 	{
 		return episodeLength;
 	}
+	
+	public boolean setSeasons(int seasons)
+	{
+		tvSeasons = seasons;
+		return true;
+	}
+	
+	public boolean setEpisodes(int episodes)
+	{
+		tvEpisodes = episodes;
+		return true;
+	}
 
 	@Override
 	public boolean setFullyWatched(){
