@@ -29,6 +29,31 @@ public class TVShow extends Video{
 		s += "Epiode Length: " + episodeLength + "\n";
 		return s;
 	}
+	
+	public int getEpisodes()
+	{
+		return tvEpisodes;
+	}
+	
+	public int getSeasons()
+	{
+		return tvSeasons;
+	}
+	
+	public int getTotalEpisodes()
+	{
+		return tvTotalEpisodes;
+	}
+	
+	public int getTotalSeasons()
+	{
+		return tvTotalSeasons;
+	}
+	
+	public int getEpisodeLength()
+	{
+		return episodeLength;
+	}
 
 	@Override
 	public boolean setFullyWatched(){

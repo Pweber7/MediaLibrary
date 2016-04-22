@@ -34,7 +34,7 @@ public abstract class Video {
 		return vGenre;
 	}
 	
-	public String description()
+	public String getDescription()
 	{
 		return vDescription;
 	}

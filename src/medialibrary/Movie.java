@@ -17,8 +17,17 @@ public class Movie extends Video{
 		return info;
 	}
 	
+	public int getRuntime()
+	{
+		return mRuntime;
+	}
+	
+	public int getTimeWatched()
+	{
+		return mTimeWatched;
+	}
 
-	public boolean editTimeWatched(int minutes)
+	public boolean setTimeWatched(int minutes)
 	{
 		mTimeWatched += minutes;
 		if(mTimeWatched > mRuntime)

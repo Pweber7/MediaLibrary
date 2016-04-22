@@ -167,7 +167,7 @@ public class UserInterface {
 					}
 				}
 			}
-			else if(action.charAt(0) == ('S'))
+			else if(action.equals("SEARCH"))
 			{
 				System.out.println("Would you like to search for a Video or Song? ");
 				action = reader.nextLine();
@@ -284,7 +284,7 @@ public class UserInterface {
 					
 				}
 			}
-			else if(action.charAt(0) == 'E')
+			else if(action.equals("SET"))
 			{
 				System.out.println("What would you like to edit a Movie or TV show? ");
 				action = reader.nextLine();
@@ -301,7 +301,7 @@ public class UserInterface {
 						System.out.println("How many minutes did you watch? ");
 						int minutes = reader.nextInt();
 						reader.nextLine();
-						success = sc.editTimeWatched(title, minutes);
+						success = sc.setTimeWatched(title, minutes);
 					}
 				}
 			}

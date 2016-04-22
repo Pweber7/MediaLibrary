@@ -102,12 +102,12 @@ public class MLSystem {
 		return false;
 	}
 	
-	public boolean editTimeVideoWatched(String title, int minutes)
+	public boolean setTimeVideoWatched(String title, int minutes)
 	{
 		Movie m = (Movie) ds.getVideo(title);
 		if(m != null && m.isOnWatchlist())
 		{
-			m.editTimeWatched(minutes);
+			m.setTimeWatched(minutes);
 			//return ds.putMovie(m);
 		}
 		
