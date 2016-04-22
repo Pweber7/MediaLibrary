@@ -346,9 +346,33 @@ public class DatabaseSupport {
 		return list;
 	}
 	
+	public List<Song> searchPlaylistTitle(String title)
+	{
+		ArrayList<Song> list = new ArrayList<>();
+		ArrayList<Song> lib = new ArrayList<>();
+		lib = (ArrayList<Song>) getPlaylist();
+		
+		for(Song s : lib){
+			if(s.getTitle().contains(title)){
+				list.add(s);
+			}
+		}
+		return list;
+	}
+	
 	public List<Song> searchSongLibraryArtist(String artist)
 	{
 		ArrayList<Song> list = new ArrayList<>();
+		Statement stmt;
+		try {
+			stmt = connect.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Song where Artist ='"+artist+"'");
+			while(rs.next()){
+				list.add(new Song(rs.getString("Title"), rs.getString("Artist"), rs.getString("Genre"), rs.getBoolean("onPlaylist")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return list;
 	}
 	
