@@ -311,7 +311,7 @@ public class UserInterface {
 					System.out.println("What would you like to edit about "+ title + " ?");
 					action = reader.nextLine();
 					action = action.toUpperCase();
-					if(action == "TIME WATCHED")
+					if(action.equals("TIME WATCHED"))
 					{
 						System.out.println("How many minutes did you watch? ");
 						int minutes = reader.nextInt();
