@@ -360,6 +360,20 @@ public class DatabaseSupport {
 		return list;
 	}
 	
+	public List<Song> searchPlaylistArtist(String artist)
+	{
+		ArrayList<Song> list = new ArrayList<>();
+		ArrayList<Song> lib = new ArrayList<>();
+		lib = (ArrayList<Song>) getPlaylist();
+		
+		for(Song s : lib){
+			if(s.getTitle().contains(artist)){
+				list.add(s);
+			}
+		}
+		return list;
+	}
+	
 	public List<Song> searchSongLibraryArtist(String artist)
 	{
 		ArrayList<Song> list = new ArrayList<>();

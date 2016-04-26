@@ -126,6 +126,29 @@ public class MLSystem {
 		return ds.searchSongLibraryTitle(title);
 	}
 	
+	public List<Song> searchPlaylistTitle(String title){
+		return ds.searchPlaylistTitle(title);
+	}
+	
+	public List<Song> searchPlaylistArtist(String artist){
+		return ds.searchPlaylistArtist(artist);
+	}
+	
+	public boolean editVideoToWatched(String title){
+		Video v = ds.getVideo(title);
+		if(v != null && v.isOnWatchlist() && v.getClass() == TVShow.class){
+			TVShow t = (TVShow) v;
+			t.setFullyWatched();
+			return ds.putVideo(t);
+		}
+		else if(v != null && v.isOnWatchlist() && v.getClass() == Movie.class){
+			Movie m = (Movie) v;
+			m.setFullyWatched();
+			return ds.putVideo(m);
+		}
+		return false;
+	}
+	
 	public boolean editNumberEpisodesWatched(String title, int episodes){
 		Video v = ds.getVideo(title);
 		if(v != null && v.isOnWatchlist() && v.getClass()==TVShow.class){

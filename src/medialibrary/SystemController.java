@@ -103,6 +103,18 @@ public class SystemController {
 		return mls.searchSongLibraryTitle(title);
 	}
 	
+	public List<Song> searchPlaylistTitle(String title){
+		return mls.searchPlaylistTitle(title);
+	}
+	
+	public List<Song> searchPlaylistArtist(String artist){
+		return mls.searchPlaylistArtist(artist);
+	}
+	
+	public boolean editVideoToWatched(String title){
+		return mls.editVideoToWatched(title);
+	}
+	
 	public boolean editNumberEpisodesWatched(String title, int episodes){
 		return mls.editNumberEpisodesWatched(title, episodes);
 	}
