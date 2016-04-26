@@ -135,7 +135,7 @@ public class UserInterface {
 			}
 			else if(action.charAt(0) == 'G')
 			{
-				System.out.println("Would you like to info for a Video or Song? ");
+				System.out.println("Would you like to get info for a Video or Song? ");
 				action = reader.nextLine();
 				action = action.toUpperCase();
 				if(action.charAt(0) == 'V')
@@ -258,9 +258,19 @@ public class UserInterface {
 					action = action.toUpperCase();
 					if(action.charAt(0) == 'P')
 					{
-						System.out.println("What Song would you like to search for? ");
+						System.out.println("Would you like to search the playlist by Title or Artist? ");
 						action = reader.nextLine();
-						//sc.searchPlaylistTitle(action);
+						action = action.toUpperCase();
+						if(action.charAt(0) == 'T'){
+							System.out.println("Please type the title of the Song. ");
+							action = reader.nextLine();
+							sList = (ArrayList<Song>) sc.searchPlaylistTitle(action);		
+						}
+						else if(action.charAt(0) == 'A'){
+							System.out.println("Please type the artist you are looking for. ");
+							action = reader.nextLine();
+							sList = (ArrayList<Song>) sc.searchPlaylistArtist(action);	
+						}
 					}
 					else
 					{
@@ -317,6 +327,36 @@ public class UserInterface {
 						int minutes = reader.nextInt();
 						reader.nextLine();
 						success = sc.setTimeWatched(title, minutes);
+					}
+					if(action.equals("FULLY WATCHED")){
+						success = sc.editVideoToWatched(title);
+						reader.nextLine();
+					}
+				}
+				else
+				{
+					System.out.println("What Tv Show would you like to edit? ");						
+					String title = reader.nextLine();
+					System.out.println("What would you like to edit about "+ title + " ?");
+					action = reader.nextLine();
+					action = action.toUpperCase();
+					if(action.equals("FULLY WATCHED")){
+						success = sc.editVideoToWatched(title);
+						reader.nextLine();
+					}
+					else if(action.charAt(0) == 'S')
+					{
+						System.out.println("How many seasons did you watch? ");
+						int seasons = reader.nextInt();
+						reader.nextLine();
+						success = sc.editNumberSeasonsWatched(title, seasons);
+					}
+					else
+					{
+						System.out.println("How many episodes did you watch? ");
+						int episodes = reader.nextInt();
+						reader.nextLine();
+						success = sc.editNumberEpisodesWatched(title, episodes);
 					}
 				}
 			}
