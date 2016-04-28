@@ -74,8 +74,8 @@ public class DatabaseSupport {
 		Statement stmt;
 		try {
 			stmt = connect.createStatement();
-			stmt.executeUpdate("update "+DBNAME+".Movie set OnWatchlist=0 where Title='"+title+"'");
-			stmt.executeUpdate("update "+DBNAME+".TVShow set OnWatchlist=0 where Title='"+title+"'");
+			stmt.executeUpdate("update "+DBNAME+".Movie set OnWatchlist=0 where Title='"+title.replace("'", "/'")+"'");
+			stmt.executeUpdate("update "+DBNAME+".TVShow set OnWatchlist=0 where Title='"+title.replace("'", "/'")+"'");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
@@ -87,8 +87,8 @@ public class DatabaseSupport {
 		Statement stmt;
 		try {
 			stmt = connect.createStatement();
-			stmt.executeUpdate("update "+DBNAME+".Movie set OnWatchlist=1 where Title='"+title+"'");
-			stmt.executeUpdate("update "+DBNAME+".TVShow set OnWatchlist=1 where Title='"+title+"'");
+			stmt.executeUpdate("update "+DBNAME+".Movie set OnWatchlist=1 where Title='"+title.replace("'", "/'")+"'");
+			stmt.executeUpdate("update "+DBNAME+".TVShow set OnWatchlist=1 where Title='"+title.replace("'", "/'")+"'");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
@@ -100,7 +100,7 @@ public class DatabaseSupport {
 		Statement stmt;
 		try {
 			stmt = connect.createStatement();
-			stmt.executeUpdate("update "+DBNAME+".Song set OnPlaylist=1 where Title='"+title+"'");
+			stmt.executeUpdate("update "+DBNAME+".Song set OnPlaylist=1 where Title='"+title.replace("'", "/'")+"'");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -148,7 +148,7 @@ public class DatabaseSupport {
 		Statement stmt;
 		try {
 			stmt = connect.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where Title='"+title+"'");
+			ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Movie where Title='"+title.replace("'", "/'")+"'");
 			if(rs.next()){
 				v = new Movie(rs.getString("Title"), rs.getString("Rating"), rs.getString("Genre"), rs.getString("Description"), 
 						rs.getInt("Runtime"), rs.getInt("Runtime")-rs.getInt("TimeRemaining"), rs.getBoolean("onWatchlist"));
@@ -171,7 +171,7 @@ public class DatabaseSupport {
 		Statement stmt;
 		try {
 			stmt = connect.createStatement();
-		ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Song where Title='"+title+"'");
+		ResultSet rs = stmt.executeQuery("select * from "+DBNAME+".Song where Title='"+title.replace("'", "/'")+"'");
 			if(rs.next())
 			{
 				s = new Song(rs.getString("Title"), rs.getString("Artist"), rs.getString("Genre"), rs.getBoolean("onPlaylist"));
@@ -233,7 +233,7 @@ public class DatabaseSupport {
 		try {
 			stmt = connect.createStatement();
 			stmt.executeUpdate("update "+DBNAME+".Song set OnPlaylist=" + s.isOnPlaylist() + ", Artist='" 
-			+ s.getArtist() + "', Genre='" + s.getGenre() + "' where Title='"+s.getTitle()+"'");
+			+ s.getArtist() + "', Genre='" + s.getGenre() + "' where Title='"+s.getTitle().replace("'", "/'")+"'");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
@@ -425,15 +425,15 @@ public class DatabaseSupport {
 			if(v.getClass()==Movie.class){
 				Movie m = (Movie)v;
 				stmt.executeUpdate("update "+DBNAME+".Movie set OnWatchlist=" + m.isOnWatchlist() + ", Genre='"
-					+ m.getGenre() + "', Rating='" + m.getRating() + "', Description='" + m.getDescription() + 
-					"', Runtime=" + m.getRuntime() + ", TimeRemaining="+ (m.getRuntime()-m.getTimeWatched()) + " where Title='"+ m.getTitle() + "'");
+					+ m.getGenre() + "', Rating='" + m.getRating() + "', Description='" + m.getDescription().replace("'", "/'") + 
+					"', Runtime=" + m.getRuntime() + ", TimeRemaining="+ (m.getRuntime()-m.getTimeWatched()) + " where Title='"+ m.getTitle().replace("'", "/'") + "'");
 			}
 			else{
 				TVShow t = (TVShow) v;
 				stmt.executeUpdate("update "+DBNAME+".TVShow set OnWatchlist=" + t.isOnWatchlist() + ", Genre='"
-						+ t.getGenre() + "', Rating='" + t.getRating() + "', Description='" + t.getDescription() + 
+						+ t.getGenre() + "', Rating='" + t.getRating() + "', Description='" + t.getDescription().replace("'", "/'") + 
 						"', Episodes=" + t.getTotalEpisodes() + ", Seasons=" + t.getTotalSeasons() + ", EpisodesWatched="
-						+ t.getEpisodes() + ", SeasonsWatched=" + t.getSeasons() + " where Title='"+ t.getTitle() + "'");
+						+ t.getEpisodes() + ", SeasonsWatched=" + t.getSeasons() + " where Title='"+ t.getTitle().replace("'", "/'") + "'");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
