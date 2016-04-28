@@ -15,7 +15,7 @@ public class UserInterface {
 		{
 			vList.clear();
 			sList.clear();
-			System.out.println("What would you like to do? ");
+			System.out.println("What would you like to do? [a]dd, [r]emove, [l]ist, [g]et info, [search], [set], or [q]uit");
 			action = reader.nextLine();
 			action = action.toUpperCase();
 			if(action.charAt(0) == 'Q')
@@ -24,7 +24,7 @@ public class UserInterface {
 			}
 			if(action.charAt(0) == 'A')
 			{
-				System.out.println("Would you like to add to your Video or Audio list? ");
+				System.out.println("Would you like to add to your [V]ideo or Audio list? ");
 				action = reader.nextLine();
 				action = action.toUpperCase();
 				if(action.charAt(0) == 'V')
@@ -51,7 +51,7 @@ public class UserInterface {
 			}
 			else if(action.charAt(0) == 'R')
 			{
-				System.out.println("Would you like to remove a Video or Song?");
+				System.out.println("Would you like to remove a [V]ideo or Song?");
 				action = reader.nextLine();
 				action = action.toUpperCase();
 				if(action.charAt(0) == 'V')
@@ -78,12 +78,12 @@ public class UserInterface {
 			}
 			else if(action.charAt(0) == 'L')
 			{
-				System.out.println("Would you like to list a list of Videos or Songs? ");
+				System.out.println("Would you like to list a list of [V]ideos or Songs? ");
 				action = reader.nextLine();
 				action = action.toUpperCase();
 				if(action.charAt(0) == 'V')
 				{
-					System.out.println("Would you like to list the Video Library or your Watchlist>");
+					System.out.println("Would you like to list the [V]ideo Library or your Watchlist>");
 					action = reader.nextLine();
 					action.toUpperCase();
 					if(action.charAt(0) == 'V')
@@ -109,7 +109,7 @@ public class UserInterface {
 				}
 				else
 				{
-					System.out.println("Would you like to list the Music Library or your Playlist? ");
+					System.out.println("Would you like to list the [M]usic Library or your Playlist? ");
 					action = reader.nextLine();
 					action = action.toUpperCase();
 					if(action.charAt(0) == 'M')
@@ -135,7 +135,7 @@ public class UserInterface {
 			}
 			else if(action.charAt(0) == 'G')
 			{
-				System.out.println("Would you like to get info for a Video or Song? ");
+				System.out.println("Would you like to get info for a [V]ideo or Song? ");
 				action = reader.nextLine();
 				action = action.toUpperCase();
 				if(action.charAt(0) == 'V')
@@ -169,17 +169,17 @@ public class UserInterface {
 			}
 			else if(action.equals("SEARCH"))
 			{
-				System.out.println("Would you like to search for a Video or Song? ");
+				System.out.println("Would you like to search for a [V]ideo or Song? ");
 				action = reader.nextLine();
 				action = action.toUpperCase();
 				if(action.charAt(0) == 'V')
 				{
-					System.out.println("Would you like to search the Watchlist or Video Library? ");
+					System.out.println("Would you like to search the [W]atchlist or Video Library? ");
 					action = reader.nextLine();
 					action = action.toUpperCase(); 
 					if(action.charAt(0) == 'W')
 					{
-						System.out.println("Would you like to search by Title, Genre, Rating, Time Remaining, or Runtime? ");
+						System.out.println("Would you like to search by [Title], [G]enre, [Rating], [Time Remaining], or [Runtime]? ");
 						action = reader.nextLine();
 						action = action.toUpperCase();
 						if(action.equals("TITLE"))
@@ -217,7 +217,7 @@ public class UserInterface {
 					}
 					else
 					{
-						System.out.println("Would you like to search by Title, Genre, Rating? ");
+						System.out.println("Would you like to search by [T]itle, [G]enre, [R]ating? ");
 						action = reader.nextLine();
 						action = action.toUpperCase();
 						if(action.charAt(0) == 'T')
@@ -253,12 +253,12 @@ public class UserInterface {
 				}
 				else
 				{
-					System.out.println("Would you like to search the Playlist or Song Library? ");
+					System.out.println("Would you like to search the [P]laylist or Song Library? ");
 					action = reader.nextLine();
 					action = action.toUpperCase();
 					if(action.charAt(0) == 'P')
 					{
-						System.out.println("Would you like to search the playlist by Title or Artist? ");
+						System.out.println("Would you like to search the playlist by [T]itle or [A]rtist? ");
 						action = reader.nextLine();
 						action = action.toUpperCase();
 						if(action.charAt(0) == 'T'){
@@ -274,7 +274,7 @@ public class UserInterface {
 					}
 					else
 					{
-						System.out.println("Would you like to search for a song by Name, Artist, or Genre? ");
+						System.out.println("Would you like to search for a song by [N]ame, [A]rtist, or Genre? ");
 						action = reader.nextLine();
 						action = action.toUpperCase();
 						if(action.charAt(0) == 'N')
@@ -311,14 +311,14 @@ public class UserInterface {
 			}
 			else if(action.equals("SET"))
 			{
-				System.out.println("What would you like to edit a Movie or TV show? ");
+				System.out.println("What would you like to edit a [M]ovie or TV show? ");
 				action = reader.nextLine();
 				action = action.toUpperCase();
 				if(action.charAt(0) == 'M')
 				{
 					System.out.println("What movie would you like to edit? ");						
 					String title = reader.nextLine();
-					System.out.println("What would you like to edit about "+ title + " ?");
+					System.out.println("What would you like to edit about "+ title + " ? [time watched] or [fully watched]");
 					action = reader.nextLine();
 					action = action.toUpperCase();
 					if(action.equals("TIME WATCHED"))
@@ -337,7 +337,7 @@ public class UserInterface {
 				{
 					System.out.println("What Tv Show would you like to edit? ");						
 					String title = reader.nextLine();
-					System.out.println("What would you like to edit about "+ title + " ?");
+					System.out.println("What would you like to edit about "+ title + " ? [fully watched], [s]easons, or episodes");
 					action = reader.nextLine();
 					action = action.toUpperCase();
 					if(action.equals("FULLY WATCHED")){
