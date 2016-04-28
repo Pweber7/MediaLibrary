@@ -12,7 +12,7 @@ public class Movie extends Video{
 	}
 	
 	public String getInfo(){
-		String info = null;
+		String info = "";
 		info += vTitle + "\n" + vGenre + "\n" + vRating + "\n" + mTimeWatched + " / " + mRuntime + "\n" + vDescription + "\n";
 		return info;
 	}
